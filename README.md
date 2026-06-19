@@ -1,7 +1,9 @@
 # SpecTraL: Spectral Transformation for Layer-wise Global Rank Discovery in Federated LoRA for Vision Transformers
 
-**Hariharan Ramesh** and **Jyotikrishna Dass** — Department of Electrical and Computer Engineering, University of Arizona
-**ECML PKDD 2026**
+**Hariharan Ramesh** and **Jyotikrishna Dass** \
+_Department of Electrical and Computer Engineering, University of Arizona_
+
+📄**ECML PKDD 2026**
 
 This repository contains the official implementation of **SpecTraL**, a federated LoRA aggregation
 framework that discovers per-layer global ranks automatically, with no manual threshold tuning,
@@ -11,7 +13,7 @@ SpecTraL stacks heterogeneous client LoRA adapters, performs an orthonormal **Ho
 transformation directly in the low-rank latent space, and recovers the *exact* singular values of the
 aggregated update `ΔW* = Σ_k p_k B_k A_k` from a compact `r × r` core matrix `C = R_B R_Aᵀ` — without
 ever forming the dense `m × n` update. It then applies the **ScreeNOT** estimator to separate the
-inter-client consensus signal from non-IID noise, yielding an MSE-optimal, layer-adaptive global rank
+inter-client consensus signal from non-IID noise, yielding an optimal, layer-adaptive global rank
 `r*`. A **padding-aware initialization** scheme then maps the compact global adapters back to each
 client's full local rank for the next round of training.
 
@@ -19,7 +21,7 @@ client's full local rank for the next round of training.
 
 ---
 
-## Method at a glance
+## Methodology
 
 Per communication round, for each adapted layer:
 
@@ -43,7 +45,7 @@ Per communication round, for each adapted layer:
 
 ```bash
 # Python 3.8+ recommended
-python -m venv lora-fair && source lora-fair/bin/activate
+python -m venv spectrsl && source spectral/bin/activate
 
 # Core dependencies
 pip install -r requirements.txt
@@ -117,7 +119,7 @@ python main.py \
 You can also pin an explicit per-client rank list with `--local_ranks "64,32,16,8,4"` (cycled/truncated
 to the client count), which overrides the profile.
 
-### Convenience launch scripts
+### Example launch scripts
 
 - [`run_vit.sh`](run_vit.sh) — single-run template (edit `DEFAULT_ARGS`); auto-names the log file from
   the chosen config. Usage: `bash run_vit.sh <GPU_ID> [extra main.py args]`.
