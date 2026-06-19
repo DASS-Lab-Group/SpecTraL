@@ -4,7 +4,7 @@
 **ECML PKDD 2026**
 
 This repository contains the official implementation of **SpecTraL**, a federated LoRA aggregation
-framework that discovers per-layer global ranks automatically — with no manual threshold tuning —
+framework that discovers per-layer global ranks automatically, with no manual threshold tuning,
 by analyzing the singular-value spectrum of the aggregated update via Random Matrix Theory.
 
 SpecTraL stacks heterogeneous client LoRA adapters, performs an orthonormal **Householder QR**
@@ -15,7 +15,7 @@ inter-client consensus signal from non-IID noise, yielding an MSE-optimal, layer
 `r*`. A **padding-aware initialization** scheme then maps the compact global adapters back to each
 client's full local rank for the next round of training.
 
-> 📄 The accompanying paper is included in this repository for reference. Please cite it if you use this code (see [Citation](#citation)).
+<!-- > Please cite our paper if you use this code (see [Citation](#citation)). -->
 
 ---
 
@@ -52,9 +52,9 @@ pip install -r requirements.txt
 pip install screenot
 ```
 
-> ⚠️ **`screenot` must be installed separately.** It is required whenever
+<!-- > ⚠️ **`screenot` must be installed separately.** It is required whenever
 > `--florist_rank_method screenot` is used (i.e., for SpecTraL). If it is missing, the run will raise a
-> clear error pointing to the install command.
+> clear error pointing to the install command. -->
 
 Models (`vit_base_patch16_224`, `vit_large_patch16_224.augreg_in21k`, `mixer_b16_224`) are pulled from
 [`timm`](https://github.com/huggingface/pytorch-image-models) and cached on first use.
@@ -222,7 +222,7 @@ results/{model}/{dataset}/{aggregation}/
 
 ## Analysis & plots
 
-[`hari_plots.ipynb`](hari_plots.ipynb) reads the `ablation_round*.json` files and reproduces the
+[`main_plots.ipynb`](main_plots.ipynb) reads the `ablation_round*.json` files and reproduces the
 paper's spectral figures (e.g., scree plots with energy/ScreeNOT cut lines, and the core-matrix vs.
 expected-`ΔW` singular-value overlap). Point the `MODEL`/`DATASET`/`SETTING`/`METHOD` config cells at
 your run directory.
@@ -243,14 +243,14 @@ SpecTraL/
 ├── datasets/
 │   ├── DomainNet.py    # DomainNet loader + non-IID partition
 │   └── NICOPP.py       # NICO++ loader + non-IID partition
-├── hari_plots.ipynb   # spectral analysis & paper figures
+├── main_plots.ipynb   # spectral analysis & paper figures
 ├── run_vit.sh, run_vitl_domainnet.sh, ...   # launch scripts
 └── requirements.txt
 ```
 
 ---
 
-## Citation
+<!-- ## Citation
 
 If you use this code, please cite SpecTraL:
 
@@ -263,25 +263,7 @@ If you use this code, please cite SpecTraL:
 }
 ```
 
-This work builds on **LoRA-FAIR** and uses the **ScreeNOT** estimator; please also cite them:
-
-```bibtex
-@inproceedings{bian2025lorafair,
-  title     = {LoRA-FAIR: Federated LoRA Fine-Tuning with Aggregation and Initialization Refinement},
-  author    = {Bian, Jieming and Wang, Lei and Zhang, Letian and Xu, Jie},
-  booktitle = {ICCV},
-  year      = {2025}
-}
-
-@article{donoho2023screenot,
-  title   = {ScreeNOT: Exact MSE-optimal singular value thresholding in correlated noise},
-  author  = {Donoho, David and Gavish, Matan and Romanov, Elad},
-  journal = {Annals of Statistics},
-  year    = {2023}
-}
-```
-
----
+--- -->
 
 ## Acknowledgments
 
