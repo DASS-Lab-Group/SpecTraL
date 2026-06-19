@@ -19,24 +19,6 @@ client's full local rank for the next round of training.
 
 ---
 
-## Relationship to prior work
-
-This codebase began as a fork of the **LoRA-FAIR** codebase
-([jmbian/LoRA-FAIR](https://github.com/jmbian/LoRA-FAIR), Bian et al., ICCV 2025) and has been
-**substantially extended**. Beyond LoRA-FAIR's original aggregation, this repository adds:
-
-- A full implementation of **SpecTraL** (QR-accelerated spectral aggregation + ScreeNOT rank discovery).
-- Re-implementations of **all baselines** under a single unified harness: FedIT, FFA-LoRA, FLoRA,
-  FlexLoRA, FLoRIST, HetLoRA, and LoRA-FAIR.
-- **Heterogeneous client-rank support** across the entire pipeline (clients can train LoRA adapters at
-  different ranks), which the original codebase lacked.
-- Layer-wise spectral diagnostics, ablation tooling, and a structured results layout for analysis.
-
-For reference to the authors' earlier related work, see **FLoRIST**
-([hari1016/FLoRIST](https://github.com/hari1016/FLoRIST)).
-
----
-
 ## Method at a glance
 
 Per communication round, for each adapted layer:
