@@ -11,7 +11,7 @@ by analyzing the singular-value spectrum of the aggregated update via Random Mat
 
 SpecTraL stacks heterogeneous client LoRA adapters, performs an orthonormal **Householder QR**
 transformation directly in the low-rank latent space, and recovers the *exact* singular values of the
-aggregated update `ΔW* = Σ_k p_k B_k A_k` from a compact `r × r` core matrix `C = R_B R_Aᵀ` — without
+aggregated update `ΔW* = Σ_k p_k B_k A_k` from a compact `r × r` core matrix `C = R_B R_Aᵀ`, without
 ever forming the dense `m × n` update. It then applies the **ScreeNOT** estimator to separate the
 inter-client consensus signal from non-IID noise, yielding an optimal, layer-adaptive global rank
 `r*`. A **padding-aware initialization** scheme then maps the compact global adapters back to each
