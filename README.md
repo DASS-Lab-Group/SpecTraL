@@ -269,6 +269,5 @@ If you use this code, please cite SpecTraL:
 
 ## Acknowledgments
 
-This work used DeltaAI at NCSA through ACCESS allocation #CIS250561 (NSF grants #2138259, #2138286,
-#2138307, #2137603, #2138296), and the NVIDIA Academic Grant Program (A100 80 GiB GPUs via NVIDIA Brev).
+This work was supported by the NVIDIA Academic Grant Program using NVIDIA A100 (80 GiB) GPUs accessed via the NVIDIA Brev cloud platform.
 The codebase is derived from [LoRA-FAIR](https://github.com/jmbian/LoRA-FAIR).
